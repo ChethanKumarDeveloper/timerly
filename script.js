@@ -1,103 +1,73 @@
-let totalSeconds = 720; // 12:00 default
-let timerRunning = false;
+let totalSeconds = 720; // 12:00
+let running = false;
 let endTime = 0;
-let selectedTemplate = "";
 
 const home = document.getElementById("home");
-const templateView = document.getElementById("templateView");
-const timerDisplay = document.getElementById("timerDisplay");
-
-const setBtn = document.getElementById("setBtn");
-const startBtn = document.getElementById("startBtn");
-const stopBtn = document.getElementById("stopBtn");
-const resetBtn = document.getElementById("resetBtn");
-
+const template = document.getElementById("template");
+const timerEl = document.getElementById("timer");
 const modal = document.getElementById("modal");
 
-document.querySelectorAll(".template").forEach(t => {
-  t.onclick = () => {
-    selectedTemplate = t.dataset.template;
-    applyTemplate();
+document.querySelectorAll(".card").forEach(card => {
+  card.onclick = () => {
     home.classList.add("hidden");
-    templateView.classList.remove("hidden");
-    updateDisplay();
+    template.classList.remove("hidden");
+
+    if (card.dataset.template === "black") {
+      document.body.style.background = "black";
+      document.body.style.color = "white";
+    } else {
+      document.body.style.background =
+        "url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover";
+      document.body.style.color = "white";
+    }
+
+    update();
   };
 });
 
-function applyTemplate() {
-  if (selectedTemplate === "black") {
-    document.body.style.background = "#000";
-    document.body.style.color = "#fff";
-  } else {
-    document.body.style.background =
-      "url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover";
-    document.body.style.color = "#fff";
-  }
-}
+document.getElementById("setBtn").onclick = () => modal.classList.remove("hidden");
 
-/* SET TIME */
-setBtn.onclick = () => modal.classList.remove("hidden");
-document.getElementById("closeModal").onclick = () => modal.classList.add("hidden");
-
-document.getElementById("applyTime").onclick = () => {
-  const h = parseInt(h.value) || 0;
-  const m = parseInt(m.value) || 0;
-  const s = parseInt(s.value) || 0;
+document.getElementById("apply").onclick = () => {
+  const h = parseInt(document.getElementById("h").value) || 0;
+  const m = parseInt(document.getElementById("m").value) || 0;
+  const s = parseInt(document.getElementById("s").value) || 0;
 
   totalSeconds = h * 3600 + m * 60 + s;
-  if (totalSeconds <= 0) return alert("Invalid time");
+  if (totalSeconds <= 0) return;
 
-  updateDisplay();
   modal.classList.add("hidden");
+  update();
 };
 
-/* START */
-startBtn.onclick = () => {
-  if (timerRunning) return;
-  timerRunning = true;
+document.getElementById("startBtn").onclick = () => {
+  if (running) return;
+  running = true;
   endTime = Date.now() + totalSeconds * 1000;
-  startBtn.disabled = true;
-  stopBtn.disabled = false;
   tick();
 };
 
-/* STOP */
-stopBtn.onclick = () => {
-  timerRunning = false;
-  startBtn.disabled = false;
-  stopBtn.disabled = true;
+document.getElementById("endBtn").onclick = () => running = false;
+
+document.getElementById("resetBtn").onclick = () => {
+  running = false;
+  totalSeconds = 720;
+  update();
 };
 
-/* RESET */
-resetBtn.onclick = () => {
-  timerRunning = false;
-  totalSeconds = 720; // back to 12:00
-  startBtn.disabled = false;
-  stopBtn.disabled = true;
-  updateDisplay();
-};
-
-/* TIMER LOOP */
 function tick() {
-  if (!timerRunning) return;
+  if (!running) return;
 
-  const remaining = Math.max(0, Math.round((endTime - Date.now()) / 1000));
-  totalSeconds = remaining;
-  updateDisplay();
+  totalSeconds = Math.max(0, Math.round((endTime - Date.now()) / 1000));
+  update();
 
-  if (remaining > 0) {
+  if (totalSeconds > 0) {
     setTimeout(tick, 250);
-  } else {
-    timerRunning = false;
-    startBtn.disabled = true;
-    stopBtn.disabled = true;
-    alert("Time's up!");
   }
 }
 
-function updateDisplay() {
+function update() {
   const m = Math.floor(totalSeconds / 60);
   const s = totalSeconds % 60;
-  timerDisplay.textContent =
+  timerEl.textContent =
     `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
 }

@@ -14,34 +14,34 @@
   <button class="donate">Donate</button>
 </header>
 
-<!-- HOME / TEMPLATE PAGE -->
-<section id="home">
-  <div class="templates">
-
-    <div class="template black" data-template="black">
+<!-- HOME PAGE -->
+<section id="home" class="page">
+  <div class="cards">
+    <div class="card black" data-template="black">
       <div class="preview">12:00</div>
       <button>Choose Template</button>
     </div>
 
-    <div class="template image" data-template="image">
+    <div class="card image" data-template="image">
       <div class="preview">12:00</div>
       <button>Choose Template</button>
     </div>
-
   </div>
 
   <div class="ad">AD</div>
 </section>
 
-<!-- TEMPLATE VIEW -->
-<section id="templateView" class="hidden">
-  <div id="timerDisplay">12:00</div>
+<!-- TEMPLATE PAGE -->
+<section id="template" class="page hidden">
+  <div class="timer-wrapper">
+    <div id="timer">12:00</div>
 
-  <div class="controls">
-    <button id="setBtn">Set</button>
-    <button id="startBtn">Start</button>
-    <button id="stopBtn" disabled>Stop</button>
-    <button id="resetBtn">Reset</button>
+    <div class="controls">
+      <button id="setBtn">Set</button>
+      <button id="startBtn">Start</button>
+      <button id="endBtn">End</button>
+      <button id="resetBtn">Reset</button>
+    </div>
   </div>
 
   <div class="ad">AD</div>
@@ -51,17 +51,12 @@
 <div id="modal" class="hidden">
   <div class="modal-box">
     <h3>Set Time</h3>
-
     <div class="inputs">
-      <input type="number" id="h" placeholder="HH" min="0">
-      <input type="number" id="m" placeholder="MM" min="0" max="59">
-      <input type="number" id="s" placeholder="SS" min="0" max="59">
+      <input id="h" type="number" placeholder="HH" min="0">
+      <input id="m" type="number" placeholder="MM" min="0" max="59">
+      <input id="s" type="number" placeholder="SS" min="0" max="59">
     </div>
-
-    <div class="modal-actions">
-      <button id="applyTime">Apply</button>
-      <button id="closeModal">Cancel</button>
-    </div>
+    <button id="apply">Apply</button>
   </div>
 </div>
 
