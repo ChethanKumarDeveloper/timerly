@@ -1,37 +1,41 @@
 * {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: system-ui, sans-serif;
 }
 
 body {
   margin: 0;
 }
 
-header {
+.header {
+  height: 64px;
+  padding: 0 20px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
 }
 
 .logo {
+  font-weight: 700;
   font-size: 22px;
-  font-weight: bold;
 }
 
 .donate {
   background: black;
   color: white;
+  border: none;
   padding: 8px 16px;
   border-radius: 12px;
-  border: none;
 }
 
+/* PAGES */
 .page {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
 }
 
+/* HOME */
 .cards {
   display: flex;
   gap: 20px;
@@ -41,8 +45,8 @@ header {
 
 .card {
   min-width: 260px;
-  border-radius: 20px;
   padding: 20px;
+  border-radius: 20px;
   text-align: center;
 }
 
@@ -62,14 +66,8 @@ header {
   margin: 40px 0;
 }
 
-.card button {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-}
-
-.timer-wrapper {
+/* TEMPLATE */
+.timer-area {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -78,8 +76,9 @@ header {
 }
 
 #timer {
-  font-size: 160px; /* BIG TIMER */
-  font-weight: bold;
+  font-size: min(20vw, 180px); /* BIG & RESPONSIVE */
+  font-weight: 800;
+  line-height: 1;
   margin-bottom: 30px;
 }
 
@@ -91,23 +90,20 @@ header {
   font-size: 16px;
 }
 
+/* AD */
 .ad {
-  height: 70px;
-  background: #ddd;
+  height: 72px;
   margin: 20px;
   border-radius: 16px;
+  background: #e0e0e0;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: #999;
-}
-
-.hidden {
-  display: none;
+  justify-content: center;
+  color: #888;
 }
 
 /* MODAL */
-#modal {
+.modal {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.6);
@@ -119,14 +115,19 @@ header {
 .modal-box {
   background: white;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 18px;
   width: 280px;
   text-align: center;
 }
 
 .inputs input {
   width: 70px;
-  margin: 8px;
   padding: 10px;
+  margin: 6px;
   font-size: 18px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
 }
