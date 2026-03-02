@@ -18,7 +18,7 @@ document.querySelectorAll(".card").forEach(card => {
       document.body.style.color = "#fff";
     } else {
       document.body.style.background =
-        "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwqvVVMQne-LaDLiDyj25uSMSObrh0IAblQ&s') center/cover";
+        "url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover";
       document.body.style.color = "#fff";
     }
 
