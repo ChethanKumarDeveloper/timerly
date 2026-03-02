@@ -1,19 +1,27 @@
+let totalSeconds = 720; // 12:00 default
+let timerRunning = false;
+let endTime = 0;
 let selectedTemplate = "";
-let timerInterval;
-let totalSeconds = 0;
 
-const templates = document.querySelectorAll(".template");
-const timerScreen = document.getElementById("timerScreen");
-const templatesSection = document.getElementById("templates");
+const home = document.getElementById("home");
+const templateView = document.getElementById("templateView");
 const timerDisplay = document.getElementById("timerDisplay");
 
-templates.forEach(t => {
-  t.addEventListener("click", () => {
+const setBtn = document.getElementById("setBtn");
+const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+const modal = document.getElementById("modal");
+
+document.querySelectorAll(".template").forEach(t => {
+  t.onclick = () => {
     selectedTemplate = t.dataset.template;
-    templatesSection.classList.add("hidden");
-    timerScreen.classList.remove("hidden");
     applyTemplate();
-  });
+    home.classList.add("hidden");
+    templateView.classList.remove("hidden");
+    updateDisplay();
+  };
 });
 
 function applyTemplate() {
@@ -27,50 +35,69 @@ function applyTemplate() {
   }
 }
 
-document.getElementById("startBtn").addEventListener("click", () => {
-  const h = parseInt(hours.value) || 0;
-  const m = parseInt(minutes.value) || 0;
-  const s = parseInt(seconds.value) || 0;
+/* SET TIME */
+setBtn.onclick = () => modal.classList.remove("hidden");
+document.getElementById("closeModal").onclick = () => modal.classList.add("hidden");
+
+document.getElementById("applyTime").onclick = () => {
+  const h = parseInt(h.value) || 0;
+  const m = parseInt(m.value) || 0;
+  const s = parseInt(s.value) || 0;
 
   totalSeconds = h * 3600 + m * 60 + s;
+  if (totalSeconds <= 0) return alert("Invalid time");
 
-  if (totalSeconds <= 0) return alert("Enter valid time");
+  updateDisplay();
+  modal.classList.add("hidden");
+};
 
-  document.getElementById("inputs").style.display = "none";
-  startCountdown();
-});
+/* START */
+startBtn.onclick = () => {
+  if (timerRunning) return;
+  timerRunning = true;
+  endTime = Date.now() + totalSeconds * 1000;
+  startBtn.disabled = true;
+  stopBtn.disabled = false;
+  tick();
+};
 
-function startCountdown() {
+/* STOP */
+stopBtn.onclick = () => {
+  timerRunning = false;
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
+};
+
+/* RESET */
+resetBtn.onclick = () => {
+  timerRunning = false;
+  totalSeconds = 720; // back to 12:00
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
+  updateDisplay();
+};
+
+/* TIMER LOOP */
+function tick() {
+  if (!timerRunning) return;
+
+  const remaining = Math.max(0, Math.round((endTime - Date.now()) / 1000));
+  totalSeconds = remaining;
   updateDisplay();
 
-  timerInterval = setInterval(() => {
-    totalSeconds--;
-    updateDisplay();
-
-    if (totalSeconds <= 0) {
-      clearInterval(timerInterval);
-      alert("Time's up!");
-    }
-  }, 1000);
+  if (remaining > 0) {
+    setTimeout(tick, 250);
+  } else {
+    timerRunning = false;
+    startBtn.disabled = true;
+    stopBtn.disabled = true;
+    alert("Time's up!");
+  }
 }
 
 function updateDisplay() {
-  const h = Math.floor(totalSeconds / 3600);
-  const m = Math.floor((totalSeconds % 3600) / 60);
+  const m = Math.floor(totalSeconds / 60);
   const s = totalSeconds % 60;
-
   timerDisplay.textContent =
-    `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
 }
-
-const fullscreenBtn = document.getElementById("fullscreenBtn");
-
-fullscreenBtn.addEventListener("click", () => {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-    fullscreenBtn.textContent = "Exit Fullscreen";
-  } else {
-    document.exitFullscreen();
-    fullscreenBtn.textContent = "Fullscreen";
-  }
-});
