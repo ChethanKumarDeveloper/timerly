@@ -2,13 +2,13 @@ const TEMPLATES = [
 
   /* COLOR TEMPLATES (10) */
   { id:"black", backgroundType:"color", backgroundValue:"#000", timerColor:"#fff", buttonBg:"rgba(255,255,255,0.15)", buttonColor:"#fff" },
+  { id:"brown", backgroundType:"color", backgroundValue:"#3e2723", timerColor:"#fff3e0", buttonBg:"rgba(255,255,255,0.2)", buttonColor:"#fff" },
   { id:"dark-gray", backgroundType:"color", backgroundValue:"#1f1f1f", timerColor:"#f5f5f5", buttonBg:"rgba(255,255,255,0.18)", buttonColor:"#fff" },
+  { id:"slate", backgroundType:"color", backgroundValue:"#2e3440", timerColor:"#eceff4", buttonBg:"rgba(255,255,255,0.18)", buttonColor:"#fff" },
   { id:"study-white", backgroundType:"color", backgroundValue:"#f4f4f4", timerColor:"#111", buttonBg:"rgba(0,0,0,0.15)", buttonColor:"#000" },
   { id:"deep-blue", backgroundType:"color", backgroundValue:"#0b1c2d", timerColor:"#fff", buttonBg:"rgba(255,255,255,0.18)", buttonColor:"#fff" },
   { id:"forest-green", backgroundType:"color", backgroundValue:"#0f2a1d", timerColor:"#e8f5e9", buttonBg:"rgba(255,255,255,0.16)", buttonColor:"#fff" },
   { id:"navy", backgroundType:"color", backgroundValue:"#0a0f2c", timerColor:"#fff", buttonBg:"rgba(255,255,255,0.2)", buttonColor:"#fff" },
-  { id:"slate", backgroundType:"color", backgroundValue:"#2e3440", timerColor:"#eceff4", buttonBg:"rgba(255,255,255,0.18)", buttonColor:"#fff" },
-  { id:"brown", backgroundType:"color", backgroundValue:"#3e2723", timerColor:"#fff3e0", buttonBg:"rgba(255,255,255,0.2)", buttonColor:"#fff" },
   { id:"purple", backgroundType:"color", backgroundValue:"#2a003f", timerColor:"#f3e5f5", buttonBg:"rgba(255,255,255,0.2)", buttonColor:"#fff" },
   { id:"gradient", backgroundType:"color", backgroundValue:"linear-gradient(135deg,#667eea,#764ba2)", timerColor:"#fff", buttonBg:"rgba(255,255,255,0.22)", buttonColor:"#fff" },
 
