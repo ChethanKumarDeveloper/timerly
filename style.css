@@ -20,6 +20,16 @@ body {
   font-size: 22px;
 }
 
+.logo img {
+  height: 36px;          /* controls logo size */
+  width: auto;
+  display: block;
+}
+
+.logo a {
+  display: inline-block;
+}
+
 .donate {
   background: black;
   color: white;
