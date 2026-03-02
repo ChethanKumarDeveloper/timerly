@@ -20,25 +20,45 @@ body {
   height: 36px;
 }
 
-/* DONATE BUTTON */
+/* Donate button */
 .donate {
-  padding: 12px 22px;
+  padding: 14px 26px;
   font-size: 16px;
   font-weight: 600;
   border-radius: 18px;
   border: none;
   cursor: pointer;
+
+  /* colorful & visible */
   background: linear-gradient(135deg, #ff7a18, #ffb347);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  color: #ffffff;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Donate QR image – auto size, fit safely */
-#donateModal .image {
-  max-width: 100%;     /* never overflow modal */
-  height: auto;        /* keep original ratio */
+.donate:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+.donate:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.donate-image {
+  max-width: 35%;
+  height: auto;
   display: block;
-  margin: 15px auto;   /* center horizontally */
+  margin: 10px auto 15px;
+}
+
+#closeDonate {
+  padding: 8px 18px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
 }
 
 /* PAGE */

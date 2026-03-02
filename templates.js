@@ -13,15 +13,85 @@ const TEMPLATES = [
   { id:"gradient", backgroundType:"color", backgroundValue:"linear-gradient(135deg,#667eea,#764ba2)", timerColor:"#fff", buttonBg:"rgba(255,255,255,0.22)", buttonColor:"#fff" },
 
   /* IMAGE TEMPLATES (10) */
-  { id:"mountain", backgroundType:"image", backgroundValue:"https://images.unsplash.com/photo-1501785888041-af3ef285b470", timerColor:"#fff", buttonBg:"rgba(0,0,0,0.45)", buttonColor:"#fff" },
-  { id:"sunset", backgroundType:"image", backgroundValue:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee", timerColor:"#fff", buttonBg:"rgba(0,0,0,0.45)", buttonColor:"#fff" },
-  { id:"night-city", backgroundType:"image", backgroundValue:"https://images.unsplash.com/photo-1499346030926-9a72daac6c63", timerColor:"#fff", buttonBg:"rgba(0,0,0,0.5)", buttonColor:"#fff" },
-  { id:"desk", backgroundType:"image", backgroundValue:"https://images.unsplash.com/photo-1513258496099-48168024aec0", timerColor:"#fff", buttonBg:"rgba(0,0,0,0.5)", buttonColor:"#fff" },
-  { id:"clouds", backgroundType:"image", backgroundValue:"https://images.unsplash.com/photo-1501630834273-4b5604d2ee31", timerColor:"#fff", buttonBg:"rgba(0,0,0,0.4)", buttonColor:"#fff" },
-  { id:"beach", backgroundType:"image", backgroundValue:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e", timerColor:"#fff", buttonBg:"rgba(0,0,0,0.4)", buttonColor:"#fff" },
-  { id:"night-sky", backgroundType:"image", backgroundValue:"https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3", timerColor:"#fff", buttonBg:"rgba(0,0,0,0.5)", buttonColor:"#fff" },
-  { id:"forest", backgroundType:"image", backgroundValue:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e", timerColor:"#fff", buttonBg:"rgba(0,0,0,0.45)", buttonColor:"#fff" },
-  { id:"minimal-desk", backgroundType:"image", backgroundValue:"https://images.unsplash.com/photo-1519710164239-da123dc03ef4", timerColor:"#fff", buttonBg:"rgba(0,0,0,0.45)", buttonColor:"#fff" },
-  { id:"abstract", backgroundType:"image", backgroundValue:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97", timerColor:"#fff", buttonBg:"rgba(0,0,0,0.55)", buttonColor:"#fff" }
+ { 
+  id:"mountain",
+  backgroundType:"image",
+  backgroundValue:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=60",
+  timerColor:"#fff",
+  buttonBg:"rgba(0,0,0,0.45)",
+  buttonColor:"#fff"
+},
+{ 
+  id:"sunset",
+  backgroundType:"image",
+  backgroundValue:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=60",
+  timerColor:"#fff",
+  buttonBg:"rgba(0,0,0,0.45)",
+  buttonColor:"#fff"
+},
+{ 
+  id:"night-city",
+  backgroundType:"image",
+  backgroundValue:"https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=600&q=60",
+  timerColor:"#fff",
+  buttonBg:"rgba(0,0,0,0.5)",
+  buttonColor:"#fff"
+},
+{ 
+  id:"desk",
+  backgroundType:"image",
+  backgroundValue:"https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=600&q=60",
+  timerColor:"#fff",
+  buttonBg:"rgba(0,0,0,0.5)",
+  buttonColor:"#fff"
+},
+{ 
+  id:"clouds",
+  backgroundType:"image",
+  backgroundValue:"https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?auto=format&fit=crop&w=600&q=60",
+  timerColor:"#fff",
+  buttonBg:"rgba(0,0,0,0.4)",
+  buttonColor:"#fff"
+},
+{ 
+  id:"beach",
+  backgroundType:"image",
+  backgroundValue:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=60",
+  timerColor:"#fff",
+  buttonBg:"rgba(0,0,0,0.4)",
+  buttonColor:"#fff"
+},
+{ 
+  id:"night-sky",
+  backgroundType:"image",
+  backgroundValue:"https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=600&q=60",
+  timerColor:"#fff",
+  buttonBg:"rgba(0,0,0,0.5)",
+  buttonColor:"#fff"
+},
+{ 
+  id:"forest",
+  backgroundType:"image",
+  backgroundValue:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=60",
+  timerColor:"#fff",
+  buttonBg:"rgba(0,0,0,0.45)",
+  buttonColor:"#fff"
+},
+{ 
+  id:"minimal-desk",
+  backgroundType:"image",
+  backgroundValue:"https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=600&q=60",
+  timerColor:"#fff",
+  buttonBg:"rgba(0,0,0,0.45)",
+  buttonColor:"#fff"
+},
+{ 
+  id:"abstract",
+  backgroundType:"image",
+  backgroundValue:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=60",
+  timerColor:"#fff",
+  buttonBg:"rgba(0,0,0,0.55)",
+  buttonColor:"#fff"
+}
 
 ];
