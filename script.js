@@ -6,25 +6,21 @@ let activeTemplate = null;
 const home = document.getElementById("home");
 const templatePage = document.getElementById("templatePage");
 const timerEl = document.getElementById("timer");
-const modal = document.getElementById("modal");
+const setModal = document.getElementById("setModal");
 const donateModal = document.getElementById("donateModal");
 
-const colorContainer = document.getElementById("colorTemplates");
-const imageContainer = document.getElementById("imageTemplates");
+const colorBox = document.getElementById("colorTemplates");
+const imageBox = document.getElementById("imageTemplates");
 
-/* RENDER HOME */
-const colorContainer = document.getElementById("colorTemplates");
-const imageContainer = document.getElementById("imageTemplates");
-
+/* RENDER TEMPLATES */
 TEMPLATES.forEach(t => {
   const card = document.createElement("div");
   card.className = "card";
 
-  if (t.backgroundType === "color") {
-    card.style.background = t.backgroundValue;
-  } else {
-    card.style.background = `url(${t.backgroundValue}) center/cover`;
-  }
+  card.style.background =
+    t.backgroundType === "color"
+      ? t.backgroundValue
+      : `url(${t.backgroundValue}) center/cover`;
 
   card.innerHTML = `
     <div class="preview">12:00</div>
@@ -33,14 +29,10 @@ TEMPLATES.forEach(t => {
 
   card.onclick = () => openTemplate(t);
 
-  if (t.backgroundType === "color") {
-    colorContainer.appendChild(card);
-  } else {
-    imageContainer.appendChild(card);
-  }
+  (t.backgroundType === "color" ? colorBox : imageBox).appendChild(card);
 });
 
-/* TEMPLATE OPEN */
+/* OPEN TEMPLATE */
 function openTemplate(t) {
   activeTemplate = t;
   home.classList.add("hidden");
@@ -61,17 +53,18 @@ function openTemplate(t) {
   resetTimer();
 }
 
-/* CONTROLS */
-document.getElementById("setBtn").onclick = () => modal.classList.add("show");
+/* SET TIME */
+document.getElementById("setBtn").onclick = () => setModal.classList.add("show");
 document.getElementById("applyBtn").onclick = () => {
-  const h = +h.value || 0;
-  const m = +m.value || 0;
-  const s = +s.value || 0;
+  const h = +document.getElementById("h").value || 0;
+  const m = +document.getElementById("m").value || 0;
+  const s = +document.getElementById("s").value || 0;
   totalSeconds = h * 3600 + m * 60 + s || 720;
-  modal.classList.remove("show");
+  setModal.classList.remove("show");
   update();
 };
 
+/* TIMER */
 document.getElementById("startBtn").onclick = () => {
   if (running) return;
   running = true;
@@ -86,7 +79,6 @@ document.getElementById("endBtn").onclick = () => {
 
 document.getElementById("resetBtn").onclick = resetTimer;
 
-/* TIMER */
 function tick() {
   if (!running) return;
   totalSeconds = Math.max(0, Math.round((endTime - Date.now()) / 1000));

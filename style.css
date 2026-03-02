@@ -20,15 +20,16 @@ body {
   height: 36px;
 }
 
+/* DONATE BUTTON */
 .donate {
   padding: 12px 22px;
   font-size: 16px;
   font-weight: 600;
   border-radius: 18px;
-  cursor: pointer;
   border: none;
+  cursor: pointer;
   background: linear-gradient(135deg, #ff7a18, #ffb347);
-  color: white;
+  color: #fff;
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
@@ -129,6 +130,12 @@ body {
   padding: 10px;
   font-size: 18px;
   text-align: center;
+}
+
+.qr {
+  width: 200px;
+  height: 200px;
+  margin: 15px 0;
 }
 
 .hidden {
