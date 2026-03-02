@@ -15,13 +15,13 @@
   <button class="donate">Donate</button>
 </header>
 
-<!-- HOME -->
+<!-- HOME PAGE -->
 <main id="home" class="page">
   <div id="cards" class="cards"></div>
 </main>
 
-<!-- TEMPLATE VIEW -->
-<main id="template" class="page hidden">
+<!-- TEMPLATE PAGE -->
+<main id="templatePage" class="page hidden">
   <div class="timer-area">
     <div id="timer">12:00</div>
 
@@ -34,14 +34,14 @@
   </div>
 </main>
 
-<!-- SET MODAL -->
-<div id="modal" class="modal hidden">
+<!-- SET TIME MODAL (HIDDEN BY DEFAULT – IMPORTANT) -->
+<div id="modal" class="modal">
   <div class="modal-box">
     <h3>Set Time</h3>
     <div class="inputs">
-      <input id="h" type="number" placeholder="HH" min="0">
-      <input id="m" type="number" placeholder="MM" min="0" max="59">
-      <input id="s" type="number" placeholder="SS" min="0" max="59">
+      <input id="h" type="number" min="0" placeholder="HH">
+      <input id="m" type="number" min="0" max="59" placeholder="MM">
+      <input id="s" type="number" min="0" max="59" placeholder="SS">
     </div>
     <button id="applyBtn">Apply</button>
   </div>

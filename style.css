@@ -7,6 +7,7 @@ body {
   margin: 0;
 }
 
+/* HEADER */
 .header {
   height: 64px;
   padding: 0 20px;
@@ -27,6 +28,7 @@ body {
   border-radius: 12px;
 }
 
+/* PAGE */
 .page {
   min-height: calc(100vh - 64px);
   display: flex;
@@ -62,10 +64,9 @@ body {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  backdrop-filter: blur(6px);
 }
 
-/* TEMPLATE */
+/* TEMPLATE PAGE */
 .timer-area {
   flex: 1;
   display: flex;
@@ -89,18 +90,21 @@ body {
   cursor: pointer;
 }
 
-.hidden {
-  display: none;
-}
-
-/* MODAL */
+/* 🔴 MODAL — CORRECT IMPLEMENTATION */
 .modal {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.6);
-  display: flex;
+
+  /* KEY FIX */
+  display: none;
+
   align-items: center;
   justify-content: center;
+}
+
+.modal.show {
+  display: flex;
 }
 
 .modal-box {
@@ -117,4 +121,9 @@ body {
   margin: 6px;
   font-size: 18px;
   text-align: center;
+}
+
+/* HIDDEN */
+.hidden {
+  display: none;
 }

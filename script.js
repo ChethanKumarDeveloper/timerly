@@ -1,8 +1,7 @@
-/* ---------- GLOBAL STATE ---------- */
 let totalSeconds = 720; // 12:00
 let running = false;
 let endTime = null;
-let activeTemplate = null; // 🔒 KEY FIX
+let activeTemplate = null; // 🔒 REQUIRED
 
 const home = document.getElementById("home");
 const templatePage = document.getElementById("templatePage");
@@ -10,7 +9,7 @@ const cards = document.getElementById("cards");
 const timerEl = document.getElementById("timer");
 const modal = document.getElementById("modal");
 
-/* ---------- RENDER HOME ---------- */
+/* RENDER HOME */
 TEMPLATES.forEach(t => {
   const card = document.createElement("div");
   card.className = "card";
@@ -28,9 +27,9 @@ TEMPLATES.forEach(t => {
   cards.appendChild(card);
 });
 
-/* ---------- TEMPLATE SELECTION ---------- */
+/* TEMPLATE SELECTION */
 function openTemplate(t) {
-  activeTemplate = t; // ✅ TEMPLATE LOCKED HERE
+  activeTemplate = t;
 
   home.classList.add("hidden");
   templatePage.classList.remove("hidden");
@@ -50,10 +49,10 @@ function openTemplate(t) {
   resetTimer();
 }
 
-/* ---------- CONTROLS ---------- */
+/* CONTROLS */
 document.getElementById("setBtn").onclick = () => {
-  if (!activeTemplate) return; // 🚫 CANNOT SET BEFORE TEMPLATE
-  modal.classList.remove("hidden");
+  if (!activeTemplate) return;
+  modal.classList.add("show");
 };
 
 document.getElementById("applyBtn").onclick = () => {
@@ -68,10 +67,11 @@ document.getElementById("applyBtn").onclick = () => {
   running = false;
   endTime = null;
 
-  modal.classList.add("hidden");
+  modal.classList.remove("show");
   update();
 };
 
+/* START */
 document.getElementById("startBtn").onclick = () => {
   if (!activeTemplate || running) return;
   running = true;
@@ -79,6 +79,7 @@ document.getElementById("startBtn").onclick = () => {
   tick();
 };
 
+/* END (PAUSE) */
 document.getElementById("endBtn").onclick = () => {
   if (!running) return;
   running = false;
@@ -89,9 +90,10 @@ document.getElementById("endBtn").onclick = () => {
   endTime = null;
 };
 
+/* RESET */
 document.getElementById("resetBtn").onclick = resetTimer;
 
-/* ---------- TIMER ---------- */
+/* TIMER LOOP */
 function tick() {
   if (!running) return;
 
