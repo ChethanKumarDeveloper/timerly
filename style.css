@@ -127,3 +127,14 @@ body {
 .hidden {
   display: none;
 }
+
+.section-title {
+  margin: 0 30px;
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.template-section {
+  margin-top: 10px;
+}

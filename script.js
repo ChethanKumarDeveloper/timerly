@@ -10,13 +10,18 @@ const timerEl = document.getElementById("timer");
 const modal = document.getElementById("modal");
 
 /* RENDER HOME */
+const colorContainer = document.getElementById("colorTemplates");
+const imageContainer = document.getElementById("imageTemplates");
+
 TEMPLATES.forEach(t => {
   const card = document.createElement("div");
   card.className = "card";
-  card.style.background =
-    t.backgroundType === "color"
-      ? t.backgroundValue
-      : `url(${t.backgroundValue}) center/cover`;
+
+  if (t.backgroundType === "color") {
+    card.style.background = t.backgroundValue;
+  } else {
+    card.style.background = `url(${t.backgroundValue}) center/cover`;
+  }
 
   card.innerHTML = `
     <div class="preview">12:00</div>
@@ -24,7 +29,12 @@ TEMPLATES.forEach(t => {
   `;
 
   card.onclick = () => openTemplate(t);
-  cards.appendChild(card);
+
+  if (t.backgroundType === "color") {
+    colorContainer.appendChild(card);
+  } else {
+    imageContainer.appendChild(card);
+  }
 });
 
 /* TEMPLATE SELECTION */
