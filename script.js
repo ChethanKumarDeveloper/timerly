@@ -62,3 +62,15 @@ function updateDisplay() {
   timerDisplay.textContent =
     `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
+
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+fullscreenBtn.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    fullscreenBtn.textContent = "Exit Fullscreen";
+  } else {
+    document.exitFullscreen();
+    fullscreenBtn.textContent = "Fullscreen";
+  }
+});
