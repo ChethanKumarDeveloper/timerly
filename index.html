@@ -8,39 +8,62 @@
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="logo">timerly.in</div>
   <button class="donate">Donate</button>
 </header>
 
-<!-- TEMPLATE SELECTION -->
-<section id="templates">
-  <div class="template black" data-template="black">
-    <div class="preview">12:00</div>
-    <button>Choose Template</button>
+<!-- HOME / TEMPLATE PAGE -->
+<section id="home">
+  <div class="templates">
+
+    <div class="template black" data-template="black">
+      <div class="preview">12:00</div>
+      <button>Choose Template</button>
+    </div>
+
+    <div class="template image" data-template="image">
+      <div class="preview">12:00</div>
+      <button>Choose Template</button>
+    </div>
+
   </div>
 
-  <div class="template image" data-template="image">
-    <div class="preview">12:00</div>
-    <button>Choose Template</button>
-  </div>
+  <div class="ad">AD</div>
 </section>
 
-<!-- TIMER SCREEN -->
-<section id="timerScreen" class="hidden">
-  <div id="timerDisplay">00:00:00</div>
+<!-- TEMPLATE VIEW -->
+<section id="templateView" class="hidden">
+  <div id="timerDisplay">12:00</div>
 
-  <div id="inputs">
-    <input type="number" id="hours" placeholder="HH" min="0">
-    <input type="number" id="minutes" placeholder="MM" min="0" max="59">
-    <input type="number" id="seconds" placeholder="SS" min="0" max="59">
+  <div class="controls">
+    <button id="setBtn">Set</button>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn" disabled>Stop</button>
+    <button id="resetBtn">Reset</button>
   </div>
 
-  <button id="startBtn">Start</button>
+  <div class="ad">AD</div>
 </section>
 
-<!-- AD PLACEHOLDER -->
-<div class="ad">AD</div>
+<!-- SET TIME MODAL -->
+<div id="modal" class="hidden">
+  <div class="modal-box">
+    <h3>Set Time</h3>
+
+    <div class="inputs">
+      <input type="number" id="h" placeholder="HH" min="0">
+      <input type="number" id="m" placeholder="MM" min="0" max="59">
+      <input type="number" id="s" placeholder="SS" min="0" max="59">
+    </div>
+
+    <div class="modal-actions">
+      <button id="applyTime">Apply</button>
+      <button id="closeModal">Cancel</button>
+    </div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
