@@ -33,6 +33,14 @@ body {
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
+/* Donate QR image – auto size, fit safely */
+#donateModal .image {
+  max-width: 100%;     /* never overflow modal */
+  height: auto;        /* keep original ratio */
+  display: block;
+  margin: 15px auto;   /* center horizontally */
+}
+
 /* PAGE */
 .page {
   min-height: calc(100vh - 64px);
