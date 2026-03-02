@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Timerly</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">timerly.in</div>
+  <button class="donate">Donate</button>
+</header>
+
+<!-- TEMPLATE SELECTION -->
+<section id="templates">
+  <div class="template black" data-template="black">
+    <div class="preview">12:00</div>
+    <button>Choose Template</button>
+  </div>
+
+  <div class="template image" data-template="image">
+    <div class="preview">12:00</div>
+    <button>Choose Template</button>
+  </div>
+</section>
+
+<!-- TIMER SCREEN -->
+<section id="timerScreen" class="hidden">
+  <div id="timerDisplay">00:00:00</div>
+
+  <div id="inputs">
+    <input type="number" id="hours" placeholder="HH" min="0">
+    <input type="number" id="minutes" placeholder="MM" min="0" max="59">
+    <input type="number" id="seconds" placeholder="SS" min="0" max="59">
+  </div>
+
+  <button id="startBtn">Start</button>
+</section>
+
+<!-- AD PLACEHOLDER -->
+<div class="ad">AD</div>
+
+<script src="script.js"></script>
+</body>
+</html>
