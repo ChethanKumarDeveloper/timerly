@@ -1,13 +1,16 @@
-let totalSeconds = 720; // 12:00
+let totalSeconds = 720;
 let running = false;
 let endTime = null;
-let activeTemplate = null; // 🔒 REQUIRED
+let activeTemplate = null;
 
 const home = document.getElementById("home");
 const templatePage = document.getElementById("templatePage");
-const cards = document.getElementById("cards");
 const timerEl = document.getElementById("timer");
 const modal = document.getElementById("modal");
+const donateModal = document.getElementById("donateModal");
+
+const colorContainer = document.getElementById("colorTemplates");
+const imageContainer = document.getElementById("imageTemplates");
 
 /* RENDER HOME */
 const colorContainer = document.getElementById("colorTemplates");
@@ -37,10 +40,9 @@ TEMPLATES.forEach(t => {
   }
 });
 
-/* TEMPLATE SELECTION */
+/* TEMPLATE OPEN */
 function openTemplate(t) {
   activeTemplate = t;
-
   home.classList.add("hidden");
   templatePage.classList.remove("hidden");
 
@@ -60,69 +62,40 @@ function openTemplate(t) {
 }
 
 /* CONTROLS */
-document.getElementById("setBtn").onclick = () => {
-  if (!activeTemplate) return;
-  modal.classList.add("show");
-};
-
+document.getElementById("setBtn").onclick = () => modal.classList.add("show");
 document.getElementById("applyBtn").onclick = () => {
-  const h = +document.getElementById("h").value || 0;
-  const m = +document.getElementById("m").value || 0;
-  const s = +document.getElementById("s").value || 0;
-
-  const value = h * 3600 + m * 60 + s;
-  if (value <= 0) return;
-
-  totalSeconds = value;
-  running = false;
-  endTime = null;
-
+  const h = +h.value || 0;
+  const m = +m.value || 0;
+  const s = +s.value || 0;
+  totalSeconds = h * 3600 + m * 60 + s || 720;
   modal.classList.remove("show");
   update();
 };
 
-/* START */
 document.getElementById("startBtn").onclick = () => {
-  if (!activeTemplate || running) return;
+  if (running) return;
   running = true;
   endTime = Date.now() + totalSeconds * 1000;
   tick();
 };
 
-/* END (PAUSE) */
 document.getElementById("endBtn").onclick = () => {
-  if (!running) return;
   running = false;
-  totalSeconds = Math.max(
-    0,
-    Math.round((endTime - Date.now()) / 1000)
-  );
-  endTime = null;
+  totalSeconds = Math.max(0, Math.round((endTime - Date.now()) / 1000));
 };
 
-/* RESET */
 document.getElementById("resetBtn").onclick = resetTimer;
 
-/* TIMER LOOP */
+/* TIMER */
 function tick() {
   if (!running) return;
-
-  totalSeconds = Math.max(
-    0,
-    Math.round((endTime - Date.now()) / 1000)
-  );
+  totalSeconds = Math.max(0, Math.round((endTime - Date.now()) / 1000));
   update();
-
-  if (totalSeconds > 0) {
-    setTimeout(tick, 200);
-  } else {
-    running = false;
-  }
+  if (totalSeconds > 0) setTimeout(tick, 200);
 }
 
 function resetTimer() {
   running = false;
-  endTime = null;
   totalSeconds = 720;
   update();
 }
@@ -131,5 +104,11 @@ function update() {
   const m = Math.floor(totalSeconds / 60);
   const s = totalSeconds % 60;
   timerEl.textContent =
-    `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
 }
+
+/* DONATE */
+document.querySelector(".donate").onclick = () =>
+  donateModal.classList.add("show");
+document.getElementById("closeDonate").onclick = () =>
+  donateModal.classList.remove("show");
