@@ -21,7 +21,7 @@ body {
 }
 
 .logo img {
-  height: 36px;          /* controls logo size */
+  height: 45px;          /* controls logo size */
   width: auto;
   display: block;
 }
