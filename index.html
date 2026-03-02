@@ -9,32 +9,18 @@
 <body>
 
 <header class="header">
-<div class="logo">
-  <a href="/">
-    <img src="logo.png" alt="Timerly logo">
-  </a>
-</div>
+  <div class="logo">
+    <img src="logo.png" alt="Timerly">
+  </div>
   <button class="donate">Donate</button>
 </header>
 
-<!-- HOME PAGE -->
+<!-- HOME -->
 <main id="home" class="page">
-  <div class="cards">
-    <div class="card black" data-template="black">
-      <div class="preview">12:00</div>
-      <button>Choose Template</button>
-    </div>
-
-    <div class="card image" data-template="image">
-      <div class="preview">12:00</div>
-      <button>Choose Template</button>
-    </div>
-  </div>
-
-  <div class="ad">AD</div>
+  <div id="cards" class="cards"></div>
 </main>
 
-<!-- TEMPLATE PAGE -->
+<!-- TEMPLATE VIEW -->
 <main id="template" class="page hidden">
   <div class="timer-area">
     <div id="timer">12:00</div>
@@ -46,8 +32,6 @@
       <button id="resetBtn">Reset</button>
     </div>
   </div>
-
-  <div class="ad">AD</div>
 </main>
 
 <!-- SET MODAL -->
@@ -55,15 +39,15 @@
   <div class="modal-box">
     <h3>Set Time</h3>
     <div class="inputs">
-      <input id="h" type="number" min="0" placeholder="HH">
-      <input id="m" type="number" min="0" max="59" placeholder="MM">
-      <input id="s" type="number" min="0" max="59" placeholder="SS">
+      <input id="h" type="number" placeholder="HH" min="0">
+      <input id="m" type="number" placeholder="MM" min="0" max="59">
+      <input id="s" type="number" placeholder="SS" min="0" max="59">
     </div>
     <button id="applyBtn">Apply</button>
   </div>
 </div>
 
+<script src="templates.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>

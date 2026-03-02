@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timerly Admin</title>
+</head>
+<body>
+
+<h2>Create Template</h2>
+
+<form id="form">
+  <input placeholder="ID"><br><br>
+  <input placeholder="Name"><br><br>
+
+  <select>
+    <option value="color">Color</option>
+    <option value="image">Image</option>
+  </select><br><br>
+
+  <input placeholder="Background value"><br><br>
+  <input placeholder="Timer color"><br><br>
+  <input placeholder="Button bg"><br><br>
+  <input placeholder="Button color"><br><br>
+
+  <button>Create</button>
+</form>
+
+<pre id="out"></pre>
+
+<script>
+form.onsubmit = e => {
+  e.preventDefault();
+  const t = {
+    id: form[0].value,
+    name: form[1].value,
+    backgroundType: form[2].value,
+    backgroundValue: form[3].value,
+    timerColor: form[4].value,
+    buttonBg: form[5].value,
+    buttonColor: form[6].value
+  };
+  out.textContent = JSON.stringify(t, null, 2);
+};
+</script>
+
+</body>
+</html>

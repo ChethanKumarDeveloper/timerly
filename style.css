@@ -15,30 +15,19 @@ body {
   justify-content: space-between;
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 22px;
-}
-
 .logo img {
-  height: 45px;          /* controls logo size */
-  width: auto;
-  display: block;
-}
-
-.logo a {
-  display: inline-block;
+  height: 36px;
 }
 
 .donate {
+  border: none;
   background: black;
   color: white;
-  border: none;
   padding: 8px 16px;
   border-radius: 12px;
 }
 
-/* PAGES */
+/* PAGE */
 .page {
   min-height: calc(100vh - 64px);
   display: flex;
@@ -57,23 +46,24 @@ body {
   min-width: 260px;
   padding: 20px;
   border-radius: 20px;
+  color: white;
   text-align: center;
-}
-
-.card.black {
-  background: black;
-  color: white;
-}
-
-.card.image {
-  background: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470");
-  background-size: cover;
-  color: white;
 }
 
 .preview {
   font-size: 48px;
   margin: 40px 0;
+}
+
+.choose-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
 }
 
 /* TEMPLATE */
@@ -86,9 +76,8 @@ body {
 }
 
 #timer {
-  font-size: min(20vw, 180px); /* BIG & RESPONSIVE */
+  font-size: min(22vw, 180px);
   font-weight: 800;
-  line-height: 1;
   margin-bottom: 30px;
 }
 
@@ -98,18 +87,11 @@ body {
   border-radius: 14px;
   border: none;
   font-size: 16px;
+  cursor: pointer;
 }
 
-/* AD */
-.ad {
-  height: 72px;
-  margin: 20px;
-  border-radius: 16px;
-  background: #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #888;
+.hidden {
+  display: none;
 }
 
 /* MODAL */
@@ -137,8 +119,3 @@ body {
   font-size: 18px;
   text-align: center;
 }
-
-.hidden {
-  display: none;
-}
-
