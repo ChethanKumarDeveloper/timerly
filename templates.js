@@ -133,5 +133,68 @@ const TEMPLATES = [
     buttonBg: "rgba(255,255,255,0.22)",
     buttonColor: "#ffffff"
   }
+/* 11️⃣ BEACH SUNRISE */
+{
+  id: "beach-sunrise",
+  name: "Beach Sunrise",
+  backgroundType: "image",
+  backgroundValue:
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
 
+  timerColor: "#ffffff",
+  buttonBg: "rgba(0,0,0,0.45)",
+  buttonColor: "#ffffff"
+},
+
+/* 12️⃣ NIGHT SKY */
+{
+  id: "night-sky",
+  name: "Night Sky",
+  backgroundType: "image",
+  backgroundValue:
+    "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3",
+
+  timerColor: "#ffffff",
+  buttonBg: "rgba(0,0,0,0.5)",
+  buttonColor: "#ffffff"
+},
+
+/* 13️⃣ MINIMAL DESK */
+{
+  id: "minimal-desk",
+  name: "Minimal Desk",
+  backgroundType: "image",
+  backgroundValue:
+    "https://images.unsplash.com/photo-1519710164239-da123dc03ef4",
+
+  timerColor: "#ffffff",
+  buttonBg: "rgba(0,0,0,0.45)",
+  buttonColor: "#ffffff"
+},
+
+/* 14️⃣ CLOUDS */
+{
+  id: "clouds",
+  name: "Clouds",
+  backgroundType: "image",
+  backgroundValue:
+    "https://images.unsplash.com/photo-1501630834273-4b5604d2ee31",
+
+  timerColor: "#ffffff",
+  buttonBg: "rgba(0,0,0,0.4)",
+  buttonColor: "#ffffff"
+},
+
+/* 15️⃣ ABSTRACT DARK */
+{
+  id: "abstract-dark",
+  name: "Abstract Dark",
+  backgroundType: "image",
+  backgroundValue:
+    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+
+  timerColor: "#ffffff",
+  buttonBg: "rgba(0,0,0,0.55)",
+  buttonColor: "#ffffff"
+}
 ];
