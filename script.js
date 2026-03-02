@@ -104,3 +104,15 @@ document.querySelector(".donate").onclick = () =>
   donateModal.classList.add("show");
 document.getElementById("closeDonate").onclick = () =>
   donateModal.classList.remove("show");
+
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+fullscreenBtn.onclick = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    fullscreenBtn.textContent = "Exit Fullscreen";
+  } else {
+    document.exitFullscreen();
+    fullscreenBtn.textContent = "Fullscreen";
+  }
+};
