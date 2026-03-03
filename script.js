@@ -3,6 +3,7 @@ let running = false;
 let endTime = null;
 let activeTemplate = null;
 let hideTimeout = null;
+let wakeLock = null;
 
 const home = document.getElementById("home");
 const templatePage = document.getElementById("templatePage");
@@ -77,7 +78,14 @@ document.getElementById("startBtn").onclick = async () => {
   running = true;
   endTime = Date.now() + totalSeconds * 1000;
   tick();
+  await requestWakeLock();
   startHideTimer();
+};
+
+/* END */
+document.getElementById("endBtn").onclick = async () => {
+  running = false;
+  await releaseWakeLock();   // 👈 ADD THIS
 };
 
 /* FULLSCREEN BUTTON */
@@ -115,7 +123,12 @@ function tick() {
   if (!running) return;
   totalSeconds = Math.max(0, Math.round((endTime - Date.now()) / 1000));
   update();
-  if (totalSeconds > 0) setTimeout(tick, 200);
+  if (totalSeconds > 0) {
+  setTimeout(tick, 200);
+} else {
+  running = false;
+  releaseWakeLock();   // 👈 ADD THIS
+}
 }
 
 document.getElementById("endBtn").onclick = () => {
@@ -135,6 +148,36 @@ function update() {
   const s = totalSeconds % 60;
   timerEl.textContent =
     `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+}
+
+/* REQUEST WAKE LOCK */
+async function requestWakeLock() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+    }
+  } catch (err) {
+    console.error('Wake Lock error:', err);
+  }
+}
+
+/* RELEASE WAKE LOCK */
+async function releaseWakeLock() {
+  try {
+    if (wakeLock !== null) {
+      await wakeLock.release();
+      wakeLock = null;
+    }
+  } catch (err) {
+    console.error('Wake Lock release error:', err);
+  }
+}
+
+async function resetTimer() {
+  running = false;
+  totalSeconds = 720;
+  update();
+  await releaseWakeLock();   // 👈 ADD THIS
 }
 
 /* AUTO HIDE CONTROLS */
