@@ -6,20 +6,19 @@
   <title>Timerly</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
 
 <header class="header">
-<div class="logo">
-  <a href="index.html">
-    <img src="logo.png" alt="Timerly">
-  </a>
-</div>
+  <div class="logo">
+    <a href="index.html">
+      <img src="logo.png" alt="Timerly">
+    </a>
+  </div>
   <button class="donate">Donate</button>
 </header>
 
-<!-- HOME PAGE -->
+<!-- HOME -->
 <main id="home" class="page">
   <section class="template-section">
     <h3 class="section-title">Color Templates</h3>
@@ -37,7 +36,7 @@
   <div class="timer-area">
     <div id="timer">12:00</div>
 
-    <div class="controls">
+    <div class="controls" id="controls">
       <button id="setBtn">Set</button>
       <button id="startBtn">Start</button>
       <button id="endBtn">End</button>
@@ -63,11 +62,7 @@
 <!-- DONATE MODAL -->
 <div id="donateModal" class="modal">
   <div class="modal-box">
-    <img
-      src="https://github.com/ChethanKumarDeveloper/timerly/blob/main/PaymentQR.png?raw=true"
-      alt="Donate QR"
-      class="donate-image"
-    >
+    <img src="https://github.com/ChethanKumarDeveloper/timerly/blob/main/PaymentQR.png?raw=true" alt="Donate QR" class="donate-image">
     <button id="closeDonate">Close</button>
   </div>
 </div>

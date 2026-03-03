@@ -2,10 +2,13 @@ let totalSeconds = 720;
 let running = false;
 let endTime = null;
 let activeTemplate = null;
+let hideTimeout = null;
 
 const home = document.getElementById("home");
 const templatePage = document.getElementById("templatePage");
 const timerEl = document.getElementById("timer");
+const controls = document.getElementById("controls");
+
 const setModal = document.getElementById("setModal");
 const donateModal = document.getElementById("donateModal");
 
@@ -16,7 +19,6 @@ const imageBox = document.getElementById("imageTemplates");
 TEMPLATES.forEach(t => {
   const card = document.createElement("div");
   card.className = "card";
-
   card.style.background =
     t.backgroundType === "color"
       ? t.backgroundValue
@@ -28,7 +30,6 @@ TEMPLATES.forEach(t => {
   `;
 
   card.onclick = () => openTemplate(t);
-
   (t.backgroundType === "color" ? colorBox : imageBox).appendChild(card);
 });
 
@@ -55,6 +56,7 @@ function openTemplate(t) {
 
 /* SET TIME */
 document.getElementById("setBtn").onclick = () => setModal.classList.add("show");
+
 document.getElementById("applyBtn").onclick = () => {
   const h = +document.getElementById("h").value || 0;
   const m = +document.getElementById("m").value || 0;
@@ -64,27 +66,63 @@ document.getElementById("applyBtn").onclick = () => {
   update();
 };
 
-/* TIMER */
-document.getElementById("startBtn").onclick = () => {
+/* START */
+document.getElementById("startBtn").onclick = async () => {
   if (running) return;
+
+  if (!document.fullscreenElement) {
+    await document.documentElement.requestFullscreen();
+  }
+
   running = true;
   endTime = Date.now() + totalSeconds * 1000;
   tick();
+  startHideTimer();
 };
 
-document.getElementById("endBtn").onclick = () => {
-  running = false;
-  totalSeconds = Math.max(0, Math.round((endTime - Date.now()) / 1000));
+/* FULLSCREEN BUTTON */
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+/* FULLSCREEN BUTTON CLICK */
+fullscreenBtn.onclick = async () => {
+  if (!document.fullscreenElement) {
+    await document.documentElement.requestFullscreen();
+  } else {
+    await document.exitFullscreen();
+  }
 };
 
-document.getElementById("resetBtn").onclick = resetTimer;
+/* FULLSCREEN STATE LISTENER */
+document.addEventListener("fullscreenchange", () => {
 
+  if (document.fullscreenElement) {
+    // Entered fullscreen
+    document.body.classList.add("is-fullscreen");
+    fullscreenBtn.textContent = "Exit Fullscreen";
+  } else {
+    // Exited fullscreen
+    document.body.classList.remove("is-fullscreen");
+    fullscreenBtn.textContent = "Fullscreen";
+
+    controls.classList.remove("hidden-controls");
+    document.documentElement.classList.remove("hide-cursor");
+  }
+
+});
+
+/* TIMER */
 function tick() {
   if (!running) return;
   totalSeconds = Math.max(0, Math.round((endTime - Date.now()) / 1000));
   update();
   if (totalSeconds > 0) setTimeout(tick, 200);
 }
+
+document.getElementById("endBtn").onclick = () => {
+  running = false;
+};
+
+document.getElementById("resetBtn").onclick = resetTimer;
 
 function resetTimer() {
   running = false;
@@ -99,20 +137,41 @@ function update() {
     `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
 }
 
+/* AUTO HIDE CONTROLS */
+function startHideTimer() {
+  clearTimeout(hideTimeout);
+  controls.classList.remove("hidden-controls");
+  document.documentElement.classList.remove("hide-cursor");
+
+  hideTimeout = setTimeout(() => {
+    if (document.fullscreenElement) {
+      controls.classList.add("hidden-controls");
+      document.documentElement.classList.add("hide-cursor");
+    }
+  }, 3000);
+}
+
+document.addEventListener("mousemove", () => {
+  if (document.fullscreenElement) startHideTimer();
+});
+
+document.addEventListener("touchstart", () => {
+  if (document.fullscreenElement) startHideTimer();
+});
+
+document.addEventListener("fullscreenchange", () => {
+  if (document.fullscreenElement) {
+    document.body.classList.add("is-fullscreen");
+  } else {
+    document.body.classList.remove("is-fullscreen");
+    controls.classList.remove("hidden-controls");
+    document.documentElement.classList.remove("hide-cursor");
+  }
+});
+
 /* DONATE */
 document.querySelector(".donate").onclick = () =>
   donateModal.classList.add("show");
+
 document.getElementById("closeDonate").onclick = () =>
   donateModal.classList.remove("show");
-
-const fullscreenBtn = document.getElementById("fullscreenBtn");
-
-fullscreenBtn.onclick = () => {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-    fullscreenBtn.textContent = "Exit Fullscreen";
-  } else {
-    document.exitFullscreen();
-    fullscreenBtn.textContent = "Fullscreen";
-  }
-};
